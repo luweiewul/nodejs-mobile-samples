@@ -1,18 +1,23 @@
-# Native Gradle Sample using a Node Project folder
+# Native Gradle Sample using a Node Project folder with a native module
 
 An Android Studio project that uses the [`Node.js on Mobile`]( https://github.com/janeasystems/nodejs-mobile) shared library, as an example of using a Node Project folder inside the Application.
 
-The sample app runs the node.js engine in a background thread to start an HTTP server on port 3000. The app's Main Activity UI has a button to query the server and show the server's response (i.e. the `process.versions` value, alongside the result of using the [`left-pad` npm module](https://www.npmjs.com/package/left-pad)). Alternatively, it's also possible to access the server from a browser running on a different device connected to the same local network.
+The sample app runs the node.js engine in a background thread to start an HTTP server on port 3000. The app's Main Activity UI has a button to query the server and show the server's response, i.e. the `process.versions` value, alongside the result of using the [`sqlite3` native (in C/C++) npm module](https://www.npmjs.com/package/left-pad). Alternatively, it's also possible to access the server from a browser running on a different device connected to the same local network.
 
 ## How to run
  - Clone this project.
  - Run `npm install` inside `android/native-gradle-node-folder/app/src/main/assets/nodejs-project/`.
- - Download the Node.js on Mobile shared library from [here](https://github.com/janeasystems/nodejs-mobile/releases/download/nodejs-mobile-v0.1.6/nodejs-mobile-v0.1.6-android.zip).
+ - Download the Node.js on Mobile shared library from [here](https://github.com/JaneaSystems/nodejs-mobile/releases/download/nodejs-mobile-v0.3.3/nodejs-mobile-v0.3.3-android.zip).
  - Copy the `bin/` folder from inside the downloaded zip file to `app/libnode/bin` (There are `copy-libnode.so-here` files in each architecture's path for convenience). If it's been done correctly you'll end with the following paths for the binaries:
    - `app/libnode/bin/arm64-v8a/libnode.so`
    - `app/libnode/bin/armeabi-v7a/libnode.so`
    - `app/libnode/bin/x86/libnode.so`
    - `app/libnode/bin/x86_64/libnode.so`
+ - Build the native modules:
+    - Run `npm install` inside `android/native-gradle-node-folder/`
+    - Make sure your node version is 12.19.0 (for sqlite3 ^4.0.0 and nodejs-mobile-v0.3.3 in this sample)
+    - Make sure your environment variable ANDROID_NDK_HOME is set to correct path of the NDK installation
+    - Execute `./npm-rebuild.sh` inside `android/native-gradle-node-folder/` (So far the ARM64 architected is implemented. It's easy to modify the script to build for more architectures.)
  - In Android Studio import the `android/native-gradle/` gradle project. It will automatically check for dependencies and prompt you to install missing requirements (i.e. you may need to update the Android SDK build tools to the required version (25.0.3) and install CMake to compile the C++ file that bridges Java to the Node.js on Mobile library).
  - After the gradle build completes, run the app on a compatible device.
 

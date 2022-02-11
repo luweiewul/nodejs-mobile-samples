@@ -4,7 +4,7 @@ This is a collection of samples showcasing the use of [Node.js on Mobile](https:
 
 It contains the following samples:
 * Android: [Native Gradle Sample](android/native-gradle)
-* Android: [Native Gradle Sample using a Node Project folder](android/native-gradle-node-folder)
+* Android: [Native Gradle Sample using a Node Project folder](android/native-gradle-node-folder) **Modified in this fork to include a native node.js module (sqlite3 in C)** 
 * iOS: [Native Xcode Sample](ios/native-xcode)
 * iOS: [Native Xcode Sample using a Node Project folder](ios/native-xcode-node-folder)
 * React-Native: [Suspend Resume Sample](react-native/SuspendResume)

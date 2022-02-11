@@ -1,0 +1,16 @@
+{
+  "name": "com.example.usenativemodules",
+  "displayName": "UseNativeModules",
+  "version": "1.0.0",
+  "description": "A sample nodejs-mobile application that uses native modules.",
+  "main": "before-npm-rebuild.js",
+  "scripts": {
+    "prepare-nodejs": "cd app/src/main/assets/nodejs-project && npm install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Wei Lu",
+  "license": "MIT",
+  "dependencies": {
+    "nodejs-mobile-gyp": "^0.3.1"
+  }
+}
